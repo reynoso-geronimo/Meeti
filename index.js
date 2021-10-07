@@ -5,7 +5,7 @@ const flash= require('connect-flash');
 const router= require('./routes')
 const session = require('express-session')
 const cookieParser= require('cookie-parser')
-
+const passport = require('./config/passport')
 //variables de enetorno
 require('dotenv').config({path: 'variables.env'})
 
@@ -35,6 +35,11 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
 }))
+//inicializar passport
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 //agrega flash messages
 app.use(flash());
 
