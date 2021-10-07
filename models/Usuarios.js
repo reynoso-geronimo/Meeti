@@ -15,7 +15,7 @@ const Usuarios = db.define('usuarios', {
         allowNull:false,
         validate:{
             isEmail:{msg:'Agrega un correo valido'},
-            iuUnique:function(value,next){
+            isUnique:function(value,next){
                 var self= this;
                 Usuarios.findOne({where:{email:value}})
                     .then(function(usuario){
