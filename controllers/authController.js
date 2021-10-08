@@ -1,8 +1,18 @@
 const passport=require('passport')
 
 exports.autenticarUsuario=passport.authenticate('local',{
-    successRedirect: '/ok',
+    successRedirect: '/administracion',
     failureRedirect: '/iniciar-sesion',
     failureFlash: true,
     badRequestMessage : ' Ambos campos son obligatorios'
 })
+//revisar si el usuario esa autenticado o no
+exports.usuarioAutenticado = (req,res,next)=>{
+    //usuario autenticado
+    if(req.isAuthenticated()){
+        return next();
+    }
+
+    //si no esta autenticado
+    return res.redirect('/iniciar-sesion')
+}
