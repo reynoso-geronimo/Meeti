@@ -12,6 +12,8 @@ require('dotenv').config({path: 'variables.env'})
 //config y modelos de db
 const db = require('./config/db');
     require('./models/Usuarios')
+    require('./models/Categorias')
+    require('./models/Grupos')
         db.sync().then(()=>{console.log('DB CONECTADA')}).catch((error)=>{console.log(error)})
 
 
