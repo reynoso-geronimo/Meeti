@@ -86,8 +86,15 @@ exports.crearGrupo= async(req,res,next)=>{
    }
 }
 exports.formEditarGrupo=async(req,res)=>{
-    const grupo= await Grupos.findByPk(req.params.grupoId)
-    const categorias = await Categorias.findAll();
+    
+
+    const consultas= [];
+    consultas.push(Grupos.findByPk(req.params.grupoId));
+    consultas.push(Categorias.findAll() )
+
+    //promise con await
+    const [grupo,categorias ] = await Promise.all(consultas)
+
     res.render('editar-grupo',{
         nombrePagina: `Editar Grupo : ${grupo.nombre}`,
         grupo,
