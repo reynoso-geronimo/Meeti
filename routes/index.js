@@ -18,6 +18,8 @@ module.exports = function (){
     //panel de admin
     router.get('/administracion',authController.usuarioAutenticado, adminController.panelAdministracion)
     router.get('/nuevo-grupo',authController.usuarioAutenticado, gruposController.formNuevoGrupo )
-    router.post('/nuevo-grupo',authController.usuarioAutenticado, gruposController.crearGrupo )
+    router.post('/nuevo-grupo',authController.usuarioAutenticado, 
+    gruposController.subirImagen,
+    gruposController.crearGrupo )
     return router
 }
