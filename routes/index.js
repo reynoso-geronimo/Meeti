@@ -22,6 +22,9 @@ module.exports = function (){
     router.get('/editar-grupo/:grupoId',
     authController.usuarioAutenticado,gruposController.formEditarGrupo
     )
+    router.post('/editar-grupo/:grupoId',
+    authController.usuarioAutenticado,gruposController.EditarGrupo
+    )
 
     return router
 }

@@ -101,3 +101,25 @@ exports.formEditarGrupo=async(req,res)=>{
         categorias
     })
 }
+
+exports.EditarGrupo=async(req,res)=>{
+    const grupo = await Grupos.findOne({where:{id:req.params.grupoId, usuarioId: req.user.id}})
+
+    if(!grupo){
+        req.flash('error','operacion no valida');
+        res.redirect('/administracion')
+        return next()
+    }
+    const {nombre, descripcion, categoriaId , url} = req.body
+
+    //asignar los valores
+    grupo.nombre= nombre;
+    grupo.descripcion=descripcion;
+    grupo.categoriaId=categoriaId;
+    grupo.url=url;
+
+    //guardar en la base de datos
+    await grupo.save();
+    req.flash('exito', 'Cambios almacenados exitosamente');
+    res.redirect('/administracion')
+}
