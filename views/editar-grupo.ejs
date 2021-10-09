@@ -17,7 +17,9 @@
         <select name="categoriaId">
             <option value=value=""" selected disabled>-- Elige una Categoria --</option>
             <% categorias.forEach(categoria => { %>
-                  <option value="<%= categoria.id %> "> <%=categoria.nombre  %>  </option> 
+                  <option value="<%= categoria.id %> "
+                    <%= (grupo.categoriaId===categoria.id) ? 'selected': '' %> 
+                    > <%=categoria.nombre  %>  </option> 
             <%}) %>  
         </select>
     </div>
