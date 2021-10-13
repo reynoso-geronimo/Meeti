@@ -66,7 +66,8 @@ function llenarInputs(resultado){
   document.querySelector('#ciudad').value = resultado.address.City ||''
   document.querySelector('#estado').value = resultado.address.Region ||''
   document.querySelector('#pais').value = resultado.address.CountryCode ||''
-  document.querySelector('#lat').value = resultado.address.lat ||''
-  document.querySelector('#lng').value = resultado.address.lng ||''
+  document.querySelector('#lat').value = resultado.latlng.lat ||''
+  document.querySelector('#lng').value = resultado.latlng.lng ||''
+  
   
 }
