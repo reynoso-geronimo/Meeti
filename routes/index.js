@@ -16,6 +16,11 @@ module.exports = function () {
   router.get("/iniciar-sesion", usuariosController.formIniciarSesion);
   router.post("/iniciar-sesion", authController.autenticarUsuario);
 
+  router.get('/cerrar-sesion',
+    authController.usuarioAutenticado,
+    authController.cerrarSesion
+  )
+
   //panel de admin
   router.get(
     "/administracion",
@@ -98,6 +103,43 @@ module.exports = function () {
   router.post('/eliminar-meeti/:id',
   authController.usuarioAutenticado,
   meetiController.elminarMeeti
+  )
+
+  //editar informacion perfil
+  router.get(
+    "/editar-perfil",
+    authController.usuarioAutenticado,
+    usuariosController.formEditarPerfil
+
+  )
+  router.post(
+    "/editar-perfil",
+    authController.usuarioAutenticado,
+    usuariosController.editarPerfil
+
+  )
+  router.get(
+    "/cambiar-password",
+    authController.usuarioAutenticado,
+    usuariosController.formCambiarPassword
+
+  )
+  router.post(
+    "/cambiar-password",
+    authController.usuarioAutenticado,
+    usuariosController.cambiarPassword
+
+  )
+  router.get(
+    "/imagen-perfil",
+    authController.usuarioAutenticado,
+    usuariosController.formSubirImagePerfil
+  )
+  router.post(
+    "/imagen-perfil",
+    authController.usuarioAutenticado,
+    usuariosController.subirImagen,
+    usuariosController.guardarImagenPerfil,
   )
   return router;
 };

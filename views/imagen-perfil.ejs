@@ -1,16 +1,16 @@
 <main class ="contenedor contenedor-formularios">
     <h1><%= nombrePagina %> </h1>
     <form class="default-form" method="POST" enctype="multipart/form-data">
-
+        <legend>Sube tu Imagen que se mostrara junto a tu nombre y biografia</legend>
     <div class="campo">
         <label>Imagen</label>
         <input type="file" name="imagen">
     </div>
     <div class="campo">
-        <% if(grupo.imagen){ %> 
+        <% if(usuario.imagen){ %> 
         <label >Imagen Actual</label>
       
-        <img src="/uploads/grupos/<%= grupo.imagen %> " width="400">
+        <img src="/uploads/perfiles/<%= usuario.imagen %> " width="400">
     </div>
     
     <% }else{ %>
