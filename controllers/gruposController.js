@@ -7,7 +7,7 @@ const shortid = require("shortid");
 const fs= require('fs')
 
 const configuracionMulter = {
-  limits: { fileSize: 100000 },
+  limits: { fileSize: 1000000 },
   storage: (fileStorage = multer.diskStorage({
     destination: (req, file, next) => {
       next(null, __dirname + "/../public/uploads/grupos/");
