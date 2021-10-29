@@ -31,7 +31,7 @@ exports.home =async (req,res)=>{
 ]
 }))
     const [categorias, meetis ]= await Promise.all(consultas);
-    console.log(meetis)
+   
     res.render('home',{
         nombrePagina: 'Inicio',
         categorias,
