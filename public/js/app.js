@@ -1,5 +1,5 @@
 import { OpenStreetMapProvider } from "leaflet-geosearch";
-
+import asistencia from "./asistencia"
 //obtener valores de la base de datos
 
 const lat =document.querySelector('#lat').value || -33.689844;

@@ -13,6 +13,13 @@ module.exports = function () {
 
   router.get("/meeti/:slug",
     meetiControllerFE.mostrarMeeti
+  );
+  //confirma asistencia a meeti
+  router.post("/confirmar-asistencia/:slug",
+    meetiControllerFE.confirmarAsistencia
+  )
+  router.get("/asistentes/:slug",
+    meetiControllerFE.mostrarAsistentes
   )
 
   router.get("/crear-cuenta", usuariosController.formCrearCuenta);
