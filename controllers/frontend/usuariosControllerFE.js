@@ -11,7 +11,7 @@ exports.mostrarUsuario=async(req,res,next)=>{
   
     if(!usuario){
         res.redirect('/')
-        req.flash(`usuarios no existe`)
+        req.flash('error','usuarios no existe')
         return next()
     }
     res.render('mostrar-perfil',{

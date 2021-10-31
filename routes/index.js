@@ -6,6 +6,7 @@ const usuariosControllerFE = require("../controllers/frontend/usuariosController
 const authController = require("../controllers/authController");
 const adminController = require("../controllers/adminController");
 const gruposController = require("../controllers/gruposController");
+const gruposControllerFE = require("../controllers/frontend/gruposControllerFE");
 const meetiController = require("../controllers/meetiController");
 const meetiControllerFE= require('../controllers/frontend/meetiControllerFE')
 
@@ -26,6 +27,11 @@ module.exports = function () {
   router.get("/usuarios/:id",
     usuariosControllerFE.mostrarUsuario
   )
+
+  router.get('/grupos/:id',
+    gruposControllerFE.mostrarGrupo
+  )
+
 
   router.get("/crear-cuenta", usuariosController.formCrearCuenta);
   router.post("/crear-cuenta", usuariosController.crearNuevoUsuario);
