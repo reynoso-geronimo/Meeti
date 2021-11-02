@@ -31,6 +31,9 @@ module.exports = function () {
   router.get('/grupos/:id',
     gruposControllerFE.mostrarGrupo
   )
+  router.get('/categoria/:categoria',
+    meetiControllerFE.mostrarCategoria
+  )
 
 
   router.get("/crear-cuenta", usuariosController.formCrearCuenta);
