@@ -9,6 +9,7 @@ const gruposController = require("../controllers/gruposController");
 const gruposControllerFE = require("../controllers/frontend/gruposControllerFE");
 const meetiController = require("../controllers/meetiController");
 const meetiControllerFE= require('../controllers/frontend/meetiControllerFE')
+const comentariosControllerFE= require('../controllers/frontend/comentariosControllerFE')
 
 module.exports = function () {
   router.get("/", homeController.home);
@@ -16,6 +17,10 @@ module.exports = function () {
   router.get("/meeti/:slug",
     meetiControllerFE.mostrarMeeti
   );
+  router.post("/meeti/:id",
+    comentariosControllerFE.agregarComentario
+  );
+
   //confirma asistencia a meeti
   router.post("/confirmar-asistencia/:slug",
     meetiControllerFE.confirmarAsistencia

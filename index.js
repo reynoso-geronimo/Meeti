@@ -15,6 +15,7 @@ const db = require('./config/db');
     require('./models/Categorias')
     require('./models/Grupos')
     require('./models/Meeti')
+    require('./models/Comentarios')
         db.sync().then(()=>{console.log('DB CONECTADA')}).catch((error)=>{console.log(error)})
 
 
