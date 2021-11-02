@@ -4,6 +4,7 @@ const Usuarios = require("../../models/Usuarios");
 const moment= require('moment')
 const Sequelize = require('sequelize');
 const Categorias = require("../../models/Categorias");
+const Comentarios = require('../../models/Comentarios');
 
 
 exports.mostrarMeeti = async (req, res) => {
@@ -15,13 +16,28 @@ exports.mostrarMeeti = async (req, res) => {
       { model: Usuarios, attributes: ["nombre", "id", "imagen"] },
     ],
   });
+
+ 
+
   if(!meeti){
       res.redirect('/');
   }
+
+  const comentarios = await Comentarios.findAll({where:{meetiId:meeti.id},
+    include:[{
+      model:Usuarios,
+      attributes:['id','nombre','imagen']
+    }]
+})
+
+
+
   res.render('mostrar-meeti',{
     nombrePagina:meeti.titulo,
       meeti,
-      moment
+      moment,
+      comentarios
+
   })
 };
 exports.confirmarAsistencia=async(req,res)=>{

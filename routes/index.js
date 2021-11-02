@@ -20,6 +20,9 @@ module.exports = function () {
   router.post("/meeti/:id",
     comentariosControllerFE.agregarComentario
   );
+  router.post('/eliminar-comentario',
+    comentariosControllerFE.eliminarComentario
+  )
 
   //confirma asistencia a meeti
   router.post("/confirmar-asistencia/:slug",

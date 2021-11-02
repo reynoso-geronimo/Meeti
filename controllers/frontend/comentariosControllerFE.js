@@ -1,4 +1,5 @@
 const Comentarios = require('../../models/Comentarios')
+const Meeti = require('../../models/Meeti')
 
 exports.agregarComentario = async (req,res,next)=>{
     const {comentario} = req.body
@@ -10,4 +11,27 @@ exports.agregarComentario = async (req,res,next)=>{
     })
     res.redirect('back');
     next()
+}
+exports.eliminarComentario=async(req,res,next)=>{
+    const {comentarioId} = req.body;
+    
+    const comentario = await Comentarios.findOne({where:{id:comentarioId}})
+
+    if(!comentario){
+        res.status(404).send('Accion no valida')
+        return next()
+    }
+
+    const meeti= await Meeti.findOne({where:{id:comentario.meetiId}})
+
+    if(comentario.usuarioId=== req.user.id|| meeti.usuarioId=== req.user.id){
+       
+        await Comentarios.destroy({where:{id:comentario.id}})
+        res.status(200).send('Eliminado Correctamente')
+        return next()
+    }else{
+        res.status(403).send('Accion no valida')
+        return next()
+    }
+
 }
